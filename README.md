@@ -1,3 +1,8 @@
+# ⚠️ THIS REPO IS UNDER CONSTRUCTION! ⚠️
+Please come back later!
+
+----
+
 # Kintone Workshop Repo Template
 
 ## Quick TODO: Items
