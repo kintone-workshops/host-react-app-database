@@ -1,4 +1,5 @@
-// YOUR_BASE_DIRECTORY/netlify/functions/api.ts
+// YOUR_BASE_DIRECTORY/api/index.js
+// for vercel deployment!
 
 import express, { Router } from "express";
 import serverless from "serverless-http";
@@ -60,5 +61,4 @@ router.post('/postData', async (req, res) => {
 });
 
 api.use("/api/", router);
-
-export const handler = serverless(api);
+module.exports = api;
