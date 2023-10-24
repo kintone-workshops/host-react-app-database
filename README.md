@@ -6,17 +6,8 @@ Please come back later!
 # Kintone Workshop Repo Template
 
 ## Quick TODO: Items
-* [ ] swap `bit.ly/INSERT_REPO_SHORT_LINK` with the bit.ly link
-* [ ] swap `INSERT_REPO_NAME` with the workshop repo name
-* [ ] swap `youtube.com/live/INSERT_YOUTUBE_LINK` with YouTube Live Link
-* [ ] If not needed, remove `npm install -g @kintone/customize-uploader`
 * [ ] Update ```Create a `.env` File``` section
 * [ ] Update `Create a Kintone Web Database App` section
-* [ ] Swap `bit.ly/INSERT_SURVEY_LINK` with the Survey Link
-* [ ] Run `markdown-link-check` to check broken links - [tcort/markdown-link-check](https://github.com/tcort/markdown-link-check)
-  * `find . -name \*.md -not -path "./node_modules/*" -print0 | xargs -0 -n1 markdown-link-check -p -q`
-* [ ] Run `markdownlint '**/*.md' --ignore node_modules` to check markdown syntax - [igorshubovych/markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli)
-
 
 ## Resources
 

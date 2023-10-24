@@ -90,25 +90,20 @@ Error [ERR_UNSUPPORTED_ESM_URL_SCHEME]: Only file and data URLs are supported by
 Solution:
 
 ```shell
-cd INSERT_REPO_NAME
+cd host-react-app-database
 npm install
 ```
 
 ### `npm install` command is not working
 
-1. Verify the Node.js & npm versions **inside** the `INSERT_REPO_NAME` folder
-2. Just installed Node.js? Verify you configured Node.js versions **inside** the `INSERT_REPO_NAME` folder
+1. Verify the Node.js & npm versions **inside** the `host-react-app-database` folder
+2. Just installed Node.js? Verify you configured Node.js versions **inside** the `host-react-app-database` folder
 
 * Mac:`nodenv install 18.16.1 && nodenv local 18.16.1`
 * Windows: `nvm install 18.16.1 && nvm use 18.16.1`
 
 Not the correct versions, or confused? 🤔 → Check out the [Guide on Installing Node.js & npm {macOS & Windows}](https://dev.to/kintonedevprogram/guide-on-installing-nodejs-npm-macos-windows-16ii).
 
-### `npm run upload` failed?
-_@kintone/customize-uploader not working?_ Let's try the following:
-
-(1) Verify that customize uploader was installed globally
-* `npm install -g @kintone/customize-uploader`
 
 (2) Verify that the .env login info is correct (including the password)
 * ⚠️ Make sure your login info is inside the `.env` file & **NOT** the `.env.example` file!

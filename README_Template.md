@@ -1,10 +1,10 @@
-# TODO: Insert workshop's title
+# Hosting Your React App with Web Database
 
 ---
 
-TODO: ![banner.png](./docs/img/banner.png) - Add banner image
+![banner.png](./docs/img/banner.png)
 
-TODO: Insert the workshop's hook sentence here
+# Live walk-through hosting your React App on Vercel and Netlify hosting services! Compare and contrast live!
 
 ## Outline <!-- omit in toc -->
 * [Completed Project](#completed-project)
@@ -22,22 +22,21 @@ TODO: Project Demo Gif ![INSERT_PROJECT_DEMO_GIF.gif](./docs/img/INSERT_PROJECT_
 ## Get Started
 _Clone the Repo & Install Dependencies_ 💪
 
-First, clone the [kintone-workshops/INSERT_REPO_NAME](https://github.com/kintone-workshops/INSERT_REPO_NAME) repo!  🚀  
+First, clone the [kintone-workshops/host-react-app-database](https://github.com/kintone-workshops/host-react-app-database) repo!  🚀  
 Then go inside the folder & install the dependencies!
 
 ```shell
 cd Downloads
 
-git clone https://github.com/kintone-workshops/INSERT_REPO_NAME
+git clone https://github.com/kintone-workshops/host-react-app-database
 
-cd INSERT_REPO_NAME
+cd host-react-app-database
 
 npm install
 
-npm install -g @kintone/customize-uploader
 ```
 
-Open the `INSERT_REPO_NAME` folder in [VS Code](https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_command-line) as well:
+Open the `host-react-app-database` folder in [VS Code](https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_command-line) as well:
 
 ```shell
 code .

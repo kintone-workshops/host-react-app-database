@@ -19,19 +19,18 @@ This guide outlines all the steps required to complete the workshop.
 
 ## A. Get started - clone the repo & install dependencies
 
-First, clone the [kintone-workshops/INSERT_REPO_NAME](https://github.com/kintone-workshops/INSERT_REPO_NAME) repo!  🚀  
+First, clone the [kintone-workshops/host-react-app-database](https://github.com/kintone-workshops/host-react-app-database) repo!  🚀  
 Then go inside the folder & install the dependencies!
 
 ```shell
 cd Downloads
 
-git clone https://github.com/kintone-workshops/INSERT_REPO_NAME
+git clone https://github.com/kintone-workshops/host-react-app-database
 
-cd INSERT_REPO_NAME
+cd host-react-app-database
 
 npm install
 
-npm install -g @kintone/customize-uploader
 ```
 
 ## B. Get your free Kintone database
