@@ -104,7 +104,6 @@ npm install
 
 Not the correct versions, or confused? 🤔 → Check out the [Guide on Installing Node.js & npm {macOS & Windows}](https://dev.to/kintonedevprogram/guide-on-installing-nodejs-npm-macos-windows-16ii).
 
-
 (2) Verify that the .env login info is correct (including the password)
 * ⚠️ Make sure your login info is inside the `.env` file & **NOT** the `.env.example` file!
 * ⚠️ Verify that KINTONE_BASE_URL input is correctly formatted:

@@ -63,19 +63,14 @@ This is where we will be saving the login credentials and API Keys.
 
 Here is what your `.env` might look like:
 
-TODO: Verify that .env file is up-to-date
-
 ```txt
-KINTONE_BASE_URL="https://example.kintone.com"
-KINTONE_USERNAME="MyEmail@example.com"
-KINTONE_PASSWORD="ILoveKintone!"
+SUBDOMAIN = "example"
+APPID = "1"
+APITOKEN = "1J22qNAR54I4eiMcd0JmfDAavJNfNJDVaqt34X9A"
 ```
 
 So far, you can fill out the following variables:
-* `KINTONE_BASE_URL`
-* `KINTONE_USERNAME`
-* `KINTONE_PASSWORD`
-* `VITE_KINTONE_SUBDOMAIN`
+* `SUBDOMAIN`
 
 ### ⚠️ WARNING ⚠️ <!-- omit in toc -->
 
@@ -84,33 +79,25 @@ So far, you can fill out the following variables:
 
 ## D. Create a Kintone web database app
 
-TODO: Update `Create a Kintone Web Database App` section
-
-Let's create an **INSERT_PROJECT_NAME** Kintone App!  
+Let's create a Kintone App to store Kintone User's Country, State, and City.  
 
 Here are the required fields & their configurations for our workshop:
 
 ### Input Fields
 
-| Field Type      | Field Name                   | Field Code | Note                                                             |
-| --------------- | ---------------------------- | ---------- | ---------------------------------------------------------------- |
-| Radio button #1 | **I want a...**              | `animal`   | Options: `dog` & `cat`                                           |
-
-### Blank Space fields
-
-| Field Type | Element ID       | Note                                                            |
-| ---------- | ---------------- | --------------------------------------------------------------- |
-| Space #1   | `generateButton` | Where the **Generate Images** button will be displayed          |
+| Field Type    | Field Name  | Field Code |
+| ------------- | ----------- | ---------- |
+| Text Field #1 | **Country** | `country`  |
+| Text Field #2 | **State**   | `state`    |
+| Text Field #3 | **City**    | `city`     |
 
 ### Steps to create the Kintone App
 
-TODO: Update `Steps to create the Kintone App` section
-
 To create the Kintone App, click the **➕** button on the upper right side of the Kintone Portal.
-* ![Screenshot: The "➕" button](img/common_kintone/CreateApp-1.png)
+![Screenshot: The "➕" button](img/common_kintone/CreateApp-1.png)
 
-Once you have configured the fields, the Kintone App should look like this:  
-![Screenshot of the completed Kintone App](img/KintoneApp_Complete_Arrows.png)
+Configure the fields in the Kintone App like this:  
+![Screenshot of the completed Kintone App](img/Kintone-Field-Codes.gif)
 
 Then, click the **Save** and **Activate App** buttons! 💪
 
@@ -118,43 +105,23 @@ _Confused? 🤔 → Check out the [How to Create a Kintone Database App](https:/
 
 ## E. Generate an API token for the Kintone app
 
-TODO: Is the `Generate an API token for the Kintone app` section needed?
-
 We need to generate an API Token for our Kintone App.
 
 1. From the Kintone App, click the **App Settings** button ⚙️ on the upper right side.
-   * ![Screenshot: The "App Settings" button](https://get.kintone.help/k/img/settings_new_icon.png)
+    * ![Screenshot: The "App Settings" button](https://get.kintone.help/k/img/settings_new_icon.png)
 1. Select the **App Settings** tab
 1. Under **Customization and Integration**, click the **API Token** button.
-1. Click **Generate**. ![Screenshot: The "Generate" button](img/KintoneApp_API_1.png)
+1. Click **Generate**. ![Screenshot: The "Generate" button](img/common_kintone/KintoneApp_API_1.png)
 1. Check the `Add records` and `Edit records` boxes.  
-   * ![Screenshot: The "Add records" and "Edit records" boxes](img/KintoneApp_API_2.png)
-1. Copy the API Token and paste it to the `VITE_KINTONE_TOKEN` variable in your `.env` file.
+    * ![Screenshot: The "Add records" and "Edit records" boxes](img/common_kintone/KintoneApp_API_2.png)
+1. Copy the API Token and paste it to the `APITOKEN` variable in your `.env` file.
 1. Click the **Save** button on the bottom right side of the screen.
 1. Click the **Update App** button on the upper right side of the screen.
 
-## F. Edit your customize-manifest.json
+![KintoneApp_URL.png](img/common_kintone/KintoneApp_URL.png)
 
-TODO: Verify that `Edit your customize-manifest.json` section is up-to-date
-
-Next, we need to tell our uploading scripts which Kintone App we will be working on.
-
-Open your [customize-manifest.json](../customize-manifest.json). It will look like this:
-
-```json
-{
-    "app": "1",
-    "scope": "ALL",
-    "desktop": {
-        "js": ["dist/KintoneCustomization.js"],
-        "css": []
-    },
-    "mobile": {
-        "js": [],
-        "css": []
-    }
-}
-```
+### Update the `.env` file with the App ID as well! <!-- omit in toc -->
+Input the App ID into the `APPID` variable in your `.env` file.
 
 If this is NOT your first Kintone App, then you need to update the `"app"` variable with your App ID!
 
@@ -168,30 +135,25 @@ Kintone App's URL follows this template:
 
 So then the `https://devevents.kintone.com/k/52/` URL tells us that this App's ID is `52`
 
-![KintoneApp_URL.png](img/common_kintone/KintoneApp_URL.png)
+---
 
-### Update the `.env` file with the App ID as well! <!-- omit in toc -->
-Input the App ID into the `VITE_KINTONE_APPID` variable in your `.env` file.
+## H. Let's start coding!
+
+For this workshop, we will building of a previous workshop: [React-x-REST-API-Workshop](https://github.com/kintone-workshops/React-x-REST-API-Workshop), where we created a backend to post user's country, state, and city to Kintone. For a full walkthrough on the code, check our [YouTube Tutorial](https://www.youtube.com/watch?v=eibOMNYzyIM). 
+
+Our goal is to host our React App for free, and we'll be modifying the code for two different services: [Netlify](https://www.netlify.com) and [Vercel](https://vercel.com). Both are popular development platforms, with free tiers that allow web developers to host their applications on the web.
+
+We'll have to modify the backend code of our React App to run as a serverless function on each platform. The ExpressJS backend code will run in the background on our web server, waiting for our React front end to request data, which will then tell the backend to `GET` or `POST` data to our Kintone database, just like in the previous workshop.
+
+### Create two new folders to work in, and copy the backend code to them
+
+In the root of the project folder, create two folders: `api`, abd `netlify`. The `api` folder will be for Vercel, and the `netlify` folder for Netlify. Then, within the `netlify` folder create another folder called `functions`.
+Then, copy the contents of the `backend` folder, including `node_modules`, `package.json`, and `package-lock.json` into the `api` folder and `netlify/functions/` folder.
+
+In the `api` folder, rename `server.js` to `index.js`, and in the `netlify/functions/` folder, rename `server.js` to `api.js`.
 
 ---
 
-## H. Edit main.js
-
-For this workshop, we will only be coding in [./src/main.js](../src/main.js).
-
-At the end, we wait for the upload to finish and reload the window to ...
-
----
-
-## I. Compile and upload the code to Kintone
-
-Save your work and build your code by entering `npm run build` in your terminal!
-Then upload your code to Kintone by entering `npm run upload` in your terminal!
-
-## J. Add a record to the Kintone app to ...
-
-1. Go to your Kintone App and add a record by clicking the **➕** button on the upper right side of the screen.
-1. Fill out the fields and save the record by clicking the **Save** button on the bottom left side of the screen.
 
 ## Check your work
 

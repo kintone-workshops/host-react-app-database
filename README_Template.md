@@ -34,6 +34,12 @@ cd host-react-app-database
 
 npm install
 
+cd backend
+
+npm install
+
+cd ..
+
 ```
 
 Open the `host-react-app-database` folder in [VS Code](https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_command-line) as well:
