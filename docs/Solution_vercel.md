@@ -1,3 +1,6 @@
+# Completed Version of the Vercel deployment's index.js
+
+```js
 // YOUR_BASE_DIRECTORY/api/index.js
 // for vercel deployment!
 
@@ -61,3 +64,4 @@ router.post('/postData', async (req, res) => {
 
 api.use("/api/", router);
 module.exports = api;
+```

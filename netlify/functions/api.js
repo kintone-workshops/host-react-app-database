@@ -17,7 +17,7 @@ const api = express();
 // Parse incoming requests with JSON payloads
 api.use(express.json());
 const router = Router();
-// This route executes when a GET request lands on localhost:50000/getData
+// This route executes when a GET request lands on /api/getData
 router.get('/getData', async (req, res) => {
   const fetchOptions = {
     method: 'GET',
@@ -30,7 +30,7 @@ router.get('/getData', async (req, res) => {
   res.json(jsonResponse);
 });
 
-// This route executes when a POST request lands on localhost:50000/postData
+// This route executes when a POST request /api/postData
 router.post('/postData', async (req, res) => {
   const requestBody = {
     'app': appID,

@@ -148,24 +148,148 @@ We'll have to modify the backend code of our React App to run as a serverless fu
 ### Create two new folders to work in, and copy the backend code to them
 
 In the root of the project folder, create two folders: `api`, abd `netlify`. The `api` folder will be for Vercel, and the `netlify` folder for Netlify. Then, within the `netlify` folder create another folder called `functions`.
-Then, copy the contents of the `backend` folder, including `node_modules`, `package.json`, and `package-lock.json` into the `api` folder and `netlify/functions/` folder.
+Then, copy the contents of the `backend` folder, including `node_modules`, `package.json`, and `package-lock.json` into the `netlify/functions/` folder. We will handle the Vercel deployment in the `api` folder later.
 
-In the `api` folder, rename `server.js` to `index.js`, and in the `netlify/functions/` folder, rename `server.js` to `api.js`.
+In the `netlify/functions/` folder, rename `server.js` to `api.js`.
+
+### Create and setup config files for Netlify and Vercel
+
+When we host our project on each platform, we need to tell the hosting service some configuration details about our functions, such as where they exist, what API routes they should live on, and how to access those routes.
+
+#### Netlify
+
+In the root of the project folder, create a file called `netlify.toml`, and paste the following code into it.
+
+``` toml
+[functions]
+  external_node_modules = ["express"]
+  node_bundler = "esbuild"
+[[redirects]]
+  force = true
+  from = "/api/*"
+  status = 200
+  to = "/.netlify/functions/api/:splat"
+```
+
+This code is directly from [Netlify's Documentation](https://docs.netlify.com/integrations/frameworks/express/).
+It tells us that Express will run as a function, and that we need to install `serverless-http` in the function folder. Since this project is using JavaScript and not TypeScript, we can ignore installing the type definitions listed.
+
+In the `netlify/functions` folder:
+
+`npm install serverless-http`
+
+The `netlify.toml` file is telling our server to create a new route on the server for every express route in the `api.js` file. The API routes will be created on a new route called `/api/`. The previous project created routes on `/postdata` and `/getdata` so our new Netlify backend will exist on `/api/postdata` and `/api/getdata`.
+
+Next, we need to tell our express backend that it will be running as a serverless function. In `/netlify/functions/api.js` import serverless by adding the following line:
+
+`import serverless from "serverless-http";`
+
+and then refactor the code to `GET` and `POST` from `/api/getdata` and `/api/postdata`:
+
+``` js
+import express, { Router } from "express";
+import serverless from "serverless-http";
+
+// Get Kintone credentials from a .env file
+const subdomain = process.env.SUBDOMAIN;
+const appID = process.env.APPID;
+const apiToken = process.env.APITOKEN;
+
+// Kintone's record(s) endpoints
+const multipleRecordsEndpoint = `https://${subdomain}.kintone.com/k/v1/records.json?app=${appID}`
+const singleRecordEndpoint = `https://${subdomain}.kintone.com/k/v1/record.json?app=${appID}`;
+
+const api = express();
+// Parse incoming requests with JSON payloads
+api.use(express.json());
+const router = Router();
+// This route executes when a GET request lands on /api/getData
+router.get('/getData', async (req, res) => {
+  const fetchOptions = {
+    method: 'GET',
+    headers: {
+      'X-Cybozu-API-Token': apiToken
+    }
+  }
+  const response = await fetch(multipleRecordsEndpoint, fetchOptions);
+  const jsonResponse = await response.json();
+  res.json(jsonResponse);
+});
+
+// This route executes when a POST request /api/postData
+router.post('/postData', async (req, res) => {
+  const requestBody = {
+    'app': appID,
+    'record': {
+      'country': {
+        'value': req.body.country
+      },
+      'state': {
+        'value': req.body.state
+      },
+      'city': {
+        'value': req.body.city
+      }
+    }
+  };
+  const options = {
+    method: 'POST',
+    headers: {
+      'X-Cybozu-API-Token': apiToken,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(requestBody)
+  }
+  const response = await fetch(singleRecordEndpoint, options);
+  const jsonResponse = await response.json();
+  res.json(jsonResponse);
+});
+
+api.use("/api/", router);
+
+export const handler = serverless(api);
+```
+
+The main differences being that we add an extra `/api/` to our routes, and then tell Express is will be handled via a serverless function.
+
+#### Vercel
+
+Now, let's work on setting up our Vercel hosting. It will be fairly similar to Netlify, with some small differences.
+
+First, create a `vercel.json` file in the root folder of the project, and in it paste:
+
+``` json
+{
+  "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
+}
+```
+
+This is also taken directly from [Vercel's Express Documentation](https://vercel.com/guides/using-express-with-vercel)
+While a bit shorter than the `netlify.toml`, the function is mostly the same: For all requests on the `/api/` route, re-route them to the functions we list in the `/api` folder in our code. The `api` folder will then run our `index.js` and check / create routes for our backend to use.
+
+The code will be very similar to the Netlify deployment, however it will not directly use `serverless` functions. Vercel does that for us.
+Copy the contents of the `/netlify/functions/` folder including `package.json`, `package-lock.json`, and `node_modules` into the `api` folder.
+
+Then, rename `api.js` to `index.js`.
+In `index.js`, remove the `import serverless from "serverless-http";` from the top of the file, and the `export const handler = serverless(api);`. Instead, at the end of the file, add `module.exports = api;` and save.
 
 ---
 
+### Time to upload our code from Github, and setup our deployments!
+
+Since this section requires a lot of GUI, we recommend you watch the livestream, or the [YouTube Recording](https://www.youtube.com/watch?v=8TEEyc3DsOI). In short, you will need to create an account of each website, allow access to your git repository, and copy the `.env` variables to each deployment. Then, whenever you push to github, your project will build and update automatically!
 
 ## Check your work
 
 Is your code not working?
 
-Compare your [./src/main.js](../src/main.js) with the [Solution.md](./Solution.md) to see if it is all written correctly.
+Compare your [./netlify/functions/api.js](../netlify/functions/api.js) with the [Solution_netlify.md](./Solution_netlify.md), and your [./api/index.js](../api/index.js) with the [Solution_vercel.md](./Solution_vercel.md) to see if it is all written correctly.
+
+Ensure that your `netlify.toml` and `vercel.json` are in the root of the project folder, and lastly make sure that your `.env` variables are correctly entered on each deployment's site.
 
 ## Still got a problem?
 
-Check out README's [Debugging](TODO: Update Link) section!
-
-And finally, post your Kintone customization questions over at our community forum:  
+Post your Kintone customization questions over at our community forum:  
 [forum.kintone.dev](https://forum.kintone.dev/)
 
 Good luck coding! 💪

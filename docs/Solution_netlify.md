@@ -1,7 +1,10 @@
-// YOUR_BASE_DIRECTORY/api/index.js
-// for vercel deployment!
+# Completed Version of the Netlify deployment's api.js
+
+```js
+// YOUR_BASE_DIRECTORY/netlify/functions/api.ts
 
 import express, { Router } from "express";
+import serverless from "serverless-http";
 
 // Get Kintone credentials from a .env file
 const subdomain = process.env.SUBDOMAIN;
@@ -17,7 +20,7 @@ const api = express();
 // Parse incoming requests with JSON payloads
 api.use(express.json());
 const router = Router();
-// This route executes when a GET request lands on localhost:50000/getData
+// This route executes when a GET request lands on /api/getData
 router.get('/getData', async (req, res) => {
   const fetchOptions = {
     method: 'GET',
@@ -30,7 +33,7 @@ router.get('/getData', async (req, res) => {
   res.json(jsonResponse);
 });
 
-// This route executes when a POST request lands on localhost:50000/postData
+// This route executes when a POST request /api/postData
 router.post('/postData', async (req, res) => {
   const requestBody = {
     'app': appID,
@@ -60,4 +63,6 @@ router.post('/postData', async (req, res) => {
 });
 
 api.use("/api/", router);
-module.exports = api;
+
+export const handler = serverless(api);
+```
