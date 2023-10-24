@@ -17,12 +17,8 @@ const api = express();
 // Parse incoming requests with JSON payloads
 api.use(express.json());
 const router = Router();
-router.post("/postData", (req, res) => res.send("Hello World!"));
-
-api.use("/api/", router);
-
 // This route executes when a GET request lands on localhost:50000/getData
-api.get('/getData', async (req, res) => {
+router.get('/getData', async (req, res) => {
   const fetchOptions = {
     method: 'GET',
     headers: {
@@ -34,9 +30,8 @@ api.get('/getData', async (req, res) => {
   res.json(jsonResponse);
 });
 
-// TODO: Create a POST endpoint at /postData
 // This route executes when a POST request lands on localhost:50000/postData
-api.post('/postData', async (req, res) => {
+router.post('/postData', async (req, res) => {
   const requestBody = {
     'app': appID,
     'record': {
@@ -63,5 +58,7 @@ api.post('/postData', async (req, res) => {
   const jsonResponse = await response.json();
   res.json(jsonResponse);
 });
+
+api.use("/api/", router);
 
 export const handler = serverless(api);
