@@ -279,6 +279,7 @@ Then please verify that
 =   =   =   =   =   =   =   =   =   =
 
 ## Join our Meetup Group
+
 https://www.meetup.com/kintone-developers/
 
 ## Got Kintone Questions?
@@ -367,11 +368,13 @@ https://kintone.dev/new
 =   =   =   =   =   =   =   =   =   =
 
 ## Got Questions? 🤔
+
 Feel free to msg me with a workshop-related or a general Kintone question to me anytime ~
 
 =   =   =   =   =   =   =   =   =   =
 
 ## Why use Kintone?
+
 + Super easy to use database / backend solution
 + You can use vanilla JS to build customizations right on the platform
 + Companies are hiring engineers to build Kintone integrations
