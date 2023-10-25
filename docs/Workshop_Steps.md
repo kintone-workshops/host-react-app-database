@@ -9,12 +9,12 @@ This guide outlines all the steps required to complete the workshop.
   * [Input Fields](#input-fields)
   * [Steps to create the Kintone App](#steps-to-create-the-kintone-app)
 * [E. Generate an API token for the Kintone app](#e-generate-an-api-token-for-the-kintone-app)
-* [H. Let's start coding!](#h-lets-start-coding)
+* [F. Let's start coding!](#f-lets-start-coding)
   * [Create two new folders to work in, and copy the backend code to them](#create-two-new-folders-to-work-in-and-copy-the-backend-code-to-them)
   * [Create and setup config files for Netlify and Vercel](#create-and-setup-config-files-for-netlify-and-vercel)
     * [Netlify](#netlify)
     * [Vercel](#vercel)
-  * [Time to upload our code from GitHub, and setup our deployments!](#time-to-upload-our-code-from-github-and-setup-our-deployments)
+  * [G. Time to upload our code from GitHub, and setup our deployments!](#g-time-to-upload-our-code-from-github-and-setup-our-deployments)
 * [Check your work](#check-your-work)
 * [Still got a problem?](#still-got-a-problem)
 
@@ -138,7 +138,7 @@ So then the `https://devevents.kintone.com/k/52/` URL tells us that this App's I
 
 ---
 
-## H. Let's start coding!
+## F. Let's start coding!
 
 For this workshop, we will building of a previous workshop: [React-x-REST-API-Workshop](https://github.com/kintone-workshops/React-x-REST-API-Workshop), where we created a backend to post user's country, state, and city to Kintone.
 * For a full walkthrough on the code, check our [YouTube Tutorial](https://youtu.be/eibOMNYzyIM).
@@ -280,7 +280,7 @@ In `index.js`, remove the `import serverless from "serverless-http";` from the t
 
 ---
 
-### Time to upload our code from GitHub, and setup our deployments!
+### G. Time to upload our code from GitHub, and setup our deployments!
 
 Since this section requires a lot of GUI, we recommend you watch the livestream, or the [YouTube Recording](https://www.youtube.com/watch?v=8TEEyc3DsOI). In short, you will need to create an account of each website, allow access to your git repository, and copy the `.env` variables to each deployment. Then, whenever you push to github, your project will build and update automatically!
 
