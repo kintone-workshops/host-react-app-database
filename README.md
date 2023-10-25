@@ -1,8 +1,3 @@
-# ⚠️ THIS REPO IS UNDER CONSTRUCTION! ⚠️
-Please come back later!
-
-----
-
 # Hosting Your React App with Web Database
 
 ![banner.png](./docs/img/banner.png)
@@ -62,7 +57,17 @@ For more information, check out the [Workshop_Steps.md > B. Get Your Free Kinton
 
 ## Workshop Steps
 
-TODO: Copy the outline of the workshop steps from [Workshop_Steps.md](./docs/Workshop_Steps.md) & paste it here
+* [A. Get started - clone the repo \& install dependencies](./docs/Workshop_Steps.md#a-get-started---clone-the-repo--install-dependencies)
+* [B. Get your free Kintone database](./docs/Workshop_Steps.md#b-get-your-free-kintone-database)
+* [C. Create a `.env` file](./docs/Workshop_Steps.md#c-create-a-env-file)
+* [D. Create a Kintone web database app](./docs/Workshop_Steps.md#d-create-a-kintone-web-database-app)
+  * [Input Fields](./docs/Workshop_Steps.md#input-fields)
+  * [Steps to create the Kintone App](./docs/Workshop_Steps.md#steps-to-create-the-kintone-app)
+* [E. Generate an API token for the Kintone app](./docs/Workshop_Steps.md#e-generate-an-api-token-for-the-kintone-app)
+* [F. Let's start coding!](./docs/Workshop_Steps.md#f-lets-start-coding)
+  * [1. Create two new folders to work in, and copy the backend code to them](./docs/Workshop_Steps.md#1-create-two-new-folders-to-work-in-and-copy-the-backend-code-to-them)
+  * [2. Create and setup config files for Netlify and Vercel](./docs/Workshop_Steps.md#2-create-and-setup-config-files-for-netlify-and-vercel)
+  * [3. Time to upload our code from GitHub, and setup our deployments!](./docs/Workshop_Steps.md#3-time-to-upload-our-code-from-github-and-setup-our-deployments)
 
 ---
 
