@@ -10,11 +10,11 @@ This guide outlines all the steps required to complete the workshop.
   * [Steps to create the Kintone App](#steps-to-create-the-kintone-app)
 * [E. Generate an API token for the Kintone app](#e-generate-an-api-token-for-the-kintone-app)
 * [F. Let's start coding!](#f-lets-start-coding)
-  * [Create two new folders to work in, and copy the backend code to them](#create-two-new-folders-to-work-in-and-copy-the-backend-code-to-them)
-  * [Create and setup config files for Netlify and Vercel](#create-and-setup-config-files-for-netlify-and-vercel)
+  * [1. Create two new folders to work in, and copy the backend code to them](#1-create-two-new-folders-to-work-in-and-copy-the-backend-code-to-them)
+  * [2. Create and setup config files for Netlify and Vercel](#2-create-and-setup-config-files-for-netlify-and-vercel)
     * [Netlify](#netlify)
     * [Vercel](#vercel)
-  * [G. Time to upload our code from GitHub, and setup our deployments!](#g-time-to-upload-our-code-from-github-and-setup-our-deployments)
+  * [3. Time to upload our code from GitHub, and setup our deployments!](#3-time-to-upload-our-code-from-github-and-setup-our-deployments)
 * [Check your work](#check-your-work)
 * [Still got a problem?](#still-got-a-problem)
 
@@ -149,7 +149,7 @@ Both are popular development platforms, with free tiers that allow web developer
 
 We'll have to modify the backend code of our React App to run as a serverless function on each platform. The ExpressJS backend code will run in the background on our web server, waiting for our React front end to request data, which will then tell the backend to `GET` or `POST` data to our Kintone database, just like in the previous workshop.
 
-### Create two new folders to work in, and copy the backend code to them
+### 1. Create two new folders to work in, and copy the backend code to them
 
 In the root of the project folder, create two folders: `api`, abd `netlify`. The `api` folder will be for Vercel, and the `netlify` folder for Netlify. Then, within the `netlify` folder create another folder called `functions`.
 
@@ -157,7 +157,7 @@ Then, copy the contents of the `backend` folder, including `node_modules`, `pack
 
 In the `netlify/functions/` folder, rename `server.js` to `api.js`.
 
-### Create and setup config files for Netlify and Vercel
+### 2. Create and setup config files for Netlify and Vercel
 
 When we host our project on each platform, we need to tell the hosting service some configuration details about our functions, such as where they exist, what API routes they should live on, and how to access those routes.
 
@@ -280,9 +280,15 @@ In `index.js`, remove the `import serverless from "serverless-http";` from the t
 
 ---
 
-### G. Time to upload our code from GitHub, and setup our deployments!
+### 3. Time to upload our code from GitHub, and setup our deployments!
 
-Since this section requires a lot of GUI, we recommend you watch the livestream, or the [YouTube Recording](https://www.youtube.com/watch?v=8TEEyc3DsOI). In short, you will need to create an account of each website, allow access to your git repository, and copy the `.env` variables to each deployment. Then, whenever you push to github, your project will build and update automatically!
+<!-- Since this section requires a lot of GUI, we recommend you watch the live stream, or the [YouTube Recording](https://youtu.be/8TEEyc3DsOI). -->
+
+In short, you will need to create an account of each website, allow access to your git repository, and copy the `.env` variables to each deployment. Then, whenever you push to GitHub, your project will build and update automatically!
+
+For more information, check out the following docs:
+* Netlify: [A Step-by-Step Guide: Deploying on Netlify](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/)
+* Vercel: [Deploying Git Repositories with Vercel - Vercel Docs](https://vercel.com/docs/deployments/git#deploying-a-git-repository)
 
 ## Check your work
 
