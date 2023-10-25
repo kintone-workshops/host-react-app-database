@@ -1,21 +1,11 @@
 # Zoom Chat Snippets
-
-TODO: Perform the following steps to update the Zoom Chat Snippets:
-* TODO: Update `Create a .env File` section
-* TODO: Update `Create a Kintone Web Database App` section
-* TODO: Swap `bit.ly/INSERT_SURVEY_LINK` with the Survey Link
-
----
-
 <!-- markdownlint-disable -->
-
 * [Check-in Time Slots](#check-in-time-slots)
 * [Quick Links](#quick-links)
 * [Waiting Room](#waiting-room)
 * [Start](#start)
 * [Live on YouTube](#live-on-youtube)
 * [Install Commands {Get Started}](#install-commands-get-started)
-* [Kintone Customize Uploader](#kintone-customize-uploader)
 * [Workshop Steps](#workshop-steps)
 * [YouTube](#youtube)
 * [Create a .env File](#create-a-env-file)
@@ -66,7 +56,7 @@ https://bit.ly/kdp-host-react
 https://kintone.dev/new
 
 📺 YouTube live stream
-https://youtube.com/live/8TEEyc3DsOI?si=M0AtJ0LqlSFAZMsd
+https://youtu.be/8TEEyc3DsOI
 
 =   =   =   =   =   =   =   =   =   =
 
@@ -111,7 +101,7 @@ https://kintone.dev/new
 ## Live on YouTube
 
 If you get lost, you can "rewind" on our lives stream on YouTube:
-https://youtube.com/live/8TEEyc3DsOI?si=M0AtJ0LqlSFAZMsd
+https://youtu.be/8TEEyc3DsOI
 
 =   =   =   =   =   =   =   =   =   =
 
@@ -149,7 +139,7 @@ https://kintone.dev/new
 =   =   =   =   =   =   =   =   =   =
 
 This is also live on YouTube:
-https://youtube.com/live/8TEEyc3DsOI?si=M0AtJ0LqlSFAZMsd
+https://youtu.be/8TEEyc3DsOI
 
 It is a bit delayed but for those who want to "rewind", this is another great option ~
 
@@ -168,13 +158,11 @@ Using the .env.example file as a template, create a .env file.
 
 Then input your Kintone credentials like the following:
 
-KINTONE_BASE_URL="https://example.kintone.com"
-KINTONE_USERNAME="MyEmail@example.com"
-KINTONE_PASSWORD="ILoveKintone!"
-VITE_KINTONE_SUBDOMAIN="example"
-VITE_KINTONE_TOKEN="abcd2ef3g3hij2kl1"
-VITE_KINTONE_APPID="1"
-VITE_OPEN_AI_TOKEN="1234567890"
+```
+SUBDOMAIN = "example"
+APPID = "1"
+APITOKEN = "1J22qNAR54I4eiMcd0JmfDAavJNfNJDVaqt34X9A"
+```
 
 ⚠️ DO NOT DELETE THE .env.example FILE!
 .env.example is used by env-cmd to verify that the .env file is correctly configured.
@@ -212,14 +200,9 @@ How to set the Field Codes for the Kintone App?
 ⚠️ Field Codes are case-sensitive ⚠️
 
 Set the following Field Codes
-* Radio button #1  → animal
-* Radio button #2  → emotion
-* Text             → random
-* Check Box        → clothes
-* Date and Time    → dateTime
-* Attachment     → result
-* Space #1    → generateButton
-* Space #2    → spinner
+* Text Field #1 → country
+* Text Field #2 → state
+* Text Field #3 → city
 
 - Save!
 - Be sure to click Save and Activate App buttons! 💪
@@ -406,7 +389,7 @@ App ID = 1
 ## Live on YouTube
 
 If you get lost, you can "rewind" on our lives stream on YouTube:
-https://youtube.com/live/8TEEyc3DsOI?si=M0AtJ0LqlSFAZMsd
+https://youtu.be/8TEEyc3DsOI
 
 =   =   =   =   =   =   =   =   =   =
 
